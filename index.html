@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arvio — a digital intelligence observatory for future forecasting, pattern recognition, probability mapping, and scenario simulation.">
+  <meta name="theme-color" content="#05070D">
+  <title>Arvio — Predictive Intelligence Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a href="#probability-field" class="skip-link">Skip to simulation</a>
+
+  <!-- Floating Analytical Lens Header -->
+  <header class="lens-header" role="banner">
+    <button class="lens-trigger" id="lensTrigger" aria-label="Open forecast interface" aria-expanded="false" aria-controls="radialMenu">
+      <span class="lens-core"></span>
+      <span class="lens-ring lens-ring--1"></span>
+      <span class="lens-ring lens-ring--2"></span>
+      <span class="lens-ring lens-ring--3"></span>
+    </button>
+    <nav class="radial-menu" id="radialMenu" aria-label="Forecast datasets" hidden>
+      <ul class="radial-menu__list">
+        <li><a href="#probability-field" data-dataset="field">Forecasts</a></li>
+        <li><a href="#scenario-matrix" data-dataset="matrix">Scenarios</a></li>
+        <li><a href="#signal-corridor" data-dataset="signals">Signals</a></li>
+        <li><a href="#scenario-matrix" data-dataset="matrix">Matrix</a></li>
+        <li><a href="#timeline-brancher" data-dataset="timeline">Timeline</a></li>
+        <li><a href="#final-projection" data-dataset="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="simulation" role="main">
+
+    <!-- SECTION 1: Probability Field -->
+    <section id="probability-field" class="section section--field" aria-label="Probability Field">
+      <canvas id="fieldCanvas" class="section-canvas" aria-hidden="true"></canvas>
+      <div class="section-overlay section-overlay--minimal">
+        <span class="data-label" data-stream="true">PROBABILITY FIELD // ACTIVE</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Forecast Stream -->
+    <section id="forecast-stream" class="section section--stream" aria-label="Forecast Stream">
+      <div class="stream-container" id="streamContainer">
+        <div class="stream-column stream-column--left" id="streamLeft"></div>
+        <div class="stream-column stream-column--center" id="streamCenter"></div>
+        <div class="stream-column stream-column--right" id="streamRight"></div>
+      </div>
+      <div class="stream-pause-indicator" id="streamPauseIndicator" aria-live="polite">
+        <span class="pause-label">TIME FROZEN</span>
+        <span class="pause-path" id="pausePath"></span>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Timeline Brancher -->
+    <section id="timeline-brancher" class="section section--timeline" aria-label="Timeline Brancher">
+      <canvas id="timelineCanvas" class="section-canvas" aria-hidden="true"></canvas>
+      <div class="timeline-controls">
+        <div class="timeline-legend">
+          <span class="legend-item" data-branch="economic">Economic</span>
+          <span class="legend-item" data-branch="social">Social</span>
+          <span class="legend-item" data-branch="technological">Technological</span>
+          <span class="legend-item" data-branch="environmental">Environmental</span>
+        </div>
+        <div class="timeline-depth" id="timelineDepth">
+          <span class="depth-label">DEPTH LAYER</span>
+          <span class="depth-value" id="depthValue">0</span>
+        </div>
+      </div>
+      <div class="branch-detail" id="branchDetail" hidden>
+        <p class="branch-detail__title" id="branchTitle"></p>
+        <p class="branch-detail__desc" id="branchDesc"></p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Scenario Matrix -->
+    <section id="scenario-matrix" class="section section--matrix" aria-label="Scenario Matrix">
+      <div class="matrix-grid" id="matrixGrid"></div>
+      <div class="matrix-status">
+        <span class="data-label">WORLD STATE MATRIX // <span id="matrixCount">0</span> STATES</span>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Signal Corridor -->
+    <section id="signal-corridor" class="section section--corridor" aria-label="Signal Corridor">
+      <canvas id="corridorCanvas" class="section-canvas" aria-hidden="true"></canvas>
+      <div class="corridor-hud">
+        <div class="signal-types">
+          <span class="signal-type" data-type="trend">Trend</span>
+          <span class="signal-type" data-type="risk">Risk</span>
+          <span class="signal-type" data-type="opportunity">Opportunity</span>
+          <span class="signal-type" data-type="disruption">Disruption</span>
+        </div>
+        <div class="corridor-position">
+          <span class="position-label">SIGNAL DEPTH</span>
+          <div class="position-bar"><div class="position-fill" id="corridorPosition"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Prediction Core -->
+    <section id="prediction-core" class="section section--core" aria-label="Prediction Core">
+      <div class="core-container">
+        <canvas id="coreCanvas" class="section-canvas" aria-hidden="true"></canvas>
+        <div class="core-layers">
+          <div class="core-layer" data-speed="fast">
+            <span class="layer-label">Short-term</span>
+            <span class="layer-value" id="coreShort">—</span>
+          </div>
+          <div class="core-layer" data-speed="mid">
+            <span class="layer-label">Mid-term</span>
+            <span class="layer-value" id="coreMid">—</span>
+          </div>
+          <div class="core-layer" data-speed="slow">
+            <span class="layer-label">Long-term</span>
+            <span class="layer-value" id="coreLong">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Outcome Lab -->
+    <section id="outcome-lab" class="section section--lab" aria-label="Outcome Lab">
+      <div class="lab-grid" id="labGrid"></div>
+      <div class="lab-scanline" aria-hidden="true"></div>
+    </section>
+
+    <!-- SECTION 8: Future Map -->
+    <section id="future-map" class="section section--map" aria-label="Future Map">
+      <canvas id="mapCanvas" class="section-canvas" aria-hidden="true"></canvas>
+      <div class="map-hud">
+        <div class="map-region" id="mapRegion">
+          <span class="region-label">ACTIVE REGION</span>
+          <span class="region-name" id="regionName">—</span>
+        </div>
+        <div class="map-influence">
+          <span class="influence-label">INFLUENCE FLOWS</span>
+          <span class="influence-count" id="influenceCount">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Uncertainty Zone -->
+    <section id="uncertainty-zone" class="section section--uncertainty" aria-label="Uncertainty Zone">
+      <canvas id="uncertaintyCanvas" class="section-canvas" aria-hidden="true"></canvas>
+      <div class="uncertainty-overlay">
+        <div class="uncertainty-field uncertainty-field--blur"></div>
+        <div class="uncertainty-field uncertainty-field--flicker"></div>
+        <div class="uncertainty-predictions" id="uncertaintyPredictions"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: Final Projection -->
+    <section id="final-projection" class="section section--projection" aria-label="Final Projection">
+      <div class="projection-container">
+        <canvas id="sphereCanvas" class="section-canvas" aria-hidden="true"></canvas>
+        <div class="projection-content">
+          <h1 class="projection-title">The Future Is Not Predicted. It Is Modeled.</h1>
+          <button class="enter-arvio" id="enterArvio" type="button">
+            <span class="enter-arvio__ring"></span>
+            <span class="enter-arvio__ring enter-arvio__ring--2"></span>
+            <span class="enter-arvio__text">ENTER ARVIO</span>
+          </button>
+        </div>
+        <div class="probability-waves" id="probabilityWaves" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <span class="footer-signal">ARVIO.UNO // OBSERVATORY v1.0</span>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/sections/field.js" defer></script>
+  <script src="js/sections/stream.js" defer></script>
+  <script src="js/sections/timeline.js" defer></script>
+  <script src="js/sections/matrix.js" defer></script>
+  <script src="js/sections/corridor.js" defer></script>
+  <script src="js/sections/core.js" defer></script>
+  <script src="js/sections/lab.js" defer></script>
+  <script src="js/sections/map.js" defer></script>
+  <script src="js/sections/uncertainty.js" defer></script>
+  <script src="js/sections/projection.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
