@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Arvio — a digital intelligence observatory for future forecasting, pattern recognition, probability mapping, and scenario simulation.">
+  <meta name="keywords" content="future forecasting, scenario simulation, probability mapping, predictive intelligence">
   <meta name="theme-color" content="#05070D">
+  <meta property="og:title" content="Arvio — Predictive Intelligence Observatory">
+  <meta property="og:description" content="Observe evolving future simulations. The future is not predicted — it is modeled.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arvio.uno">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%2305070D' stroke='%236EE7FF' stroke-width='1'/><circle cx='16' cy='16' r='4' fill='%236EE7FF'/></svg>">
   <title>Arvio — Predictive Intelligence Observatory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,16 +29,41 @@
       <span class="lens-ring lens-ring--3"></span>
     </button>
     <nav class="radial-menu" id="radialMenu" aria-label="Forecast datasets" hidden>
+      <div class="radial-menu__ring" aria-hidden="true"></div>
       <ul class="radial-menu__list">
-        <li><a href="#probability-field" data-dataset="field">Forecasts</a></li>
-        <li><a href="#scenario-matrix" data-dataset="matrix">Scenarios</a></li>
-        <li><a href="#signal-corridor" data-dataset="signals">Signals</a></li>
-        <li><a href="#scenario-matrix" data-dataset="matrix">Matrix</a></li>
-        <li><a href="#timeline-brancher" data-dataset="timeline">Timeline</a></li>
-        <li><a href="#final-projection" data-dataset="contact">Contact</a></li>
+        <li class="radial-menu__item" data-angle="270"><a href="#forecast-stream" data-dataset="forecasts">Forecasts</a></li>
+        <li class="radial-menu__item" data-angle="330"><a href="#outcome-lab" data-dataset="scenarios">Scenarios</a></li>
+        <li class="radial-menu__item" data-angle="30"><a href="#signal-corridor" data-dataset="signals">Signals</a></li>
+        <li class="radial-menu__item" data-angle="90"><a href="#scenario-matrix" data-dataset="matrix">Matrix</a></li>
+        <li class="radial-menu__item" data-angle="150"><a href="#timeline-brancher" data-dataset="timeline">Timeline</a></li>
+        <li class="radial-menu__item" data-angle="210"><a href="#contact-interface" data-dataset="contact" data-contact>Contact</a></li>
       </ul>
     </nav>
   </header>
+
+  <!-- Contact Dataset Interface -->
+  <dialog class="contact-interface" id="contactInterface" aria-label="Contact transmission interface">
+    <div class="contact-interface__frame">
+      <div class="contact-interface__header">
+        <span class="contact-interface__label">TRANSMISSION CHANNEL // OPEN</span>
+        <button class="contact-interface__close" id="contactClose" type="button" aria-label="Close interface">&times;</button>
+      </div>
+      <form class="contact-interface__form" id="contactForm">
+        <div class="contact-field">
+          <label class="contact-field__label" for="contactOrigin">Origin Signal</label>
+          <input class="contact-field__input" type="text" id="contactOrigin" name="origin" placeholder="identifier@" autocomplete="name" required>
+        </div>
+        <div class="contact-field">
+          <label class="contact-field__label" for="contactPayload">Data Payload</label>
+          <textarea class="contact-field__input contact-field__input--area" id="contactPayload" name="payload" rows="4" placeholder="Encode transmission..." required></textarea>
+        </div>
+        <button class="contact-transmit" type="submit">
+          <span class="contact-transmit__text">TRANSMIT</span>
+        </button>
+      </form>
+      <div class="contact-interface__status" id="contactStatus" aria-live="polite"></div>
+    </div>
+  </dialog>
 
   <main id="simulation" role="main">
 
@@ -188,6 +219,7 @@
   <script src="js/sections/map.js" defer></script>
   <script src="js/sections/uncertainty.js" defer></script>
   <script src="js/sections/projection.js" defer></script>
+  <script src="js/sections/contact.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

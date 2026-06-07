@@ -22,7 +22,11 @@
     });
 
     menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        if (link.hasAttribute('data-contact')) {
+          e.preventDefault();
+          modules.contact.open();
+        }
         trigger.setAttribute('aria-expanded', 'false');
         menu.hidden = true;
       });
@@ -33,6 +37,7 @@
     modules.stream = new Arvio.Stream();
     modules.matrix = new Arvio.Matrix();
     modules.lab = new Arvio.Lab();
+    modules.contact = new Arvio.Contact();
 
     canvasSections.field = new Arvio.Field(document.getElementById('fieldCanvas'));
     canvasSections.timeline = new Arvio.Timeline(document.getElementById('timelineCanvas'));
